@@ -8,6 +8,7 @@ using UnnaturalSelection.Character;
 using UnnaturalSelection.Weapons;
 using UnitySharpNEAT;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 namespace UnnaturalSelection.UI
 {
@@ -29,12 +30,17 @@ namespace UnnaturalSelection.UI
         [SerializeField] private InputAction captureScreenshotAction = null;
 
         [SerializeField] private Transform pauseMenu = null;
+        [SerializeField] private Button mainMenuButton = null;
+        [SerializeField] private Button pauseQuitButton = null;
 
         private void Awake()
         {
             inputActionMap = GameplayManager.Instance.GetActionMap("UI");
             escapeAction = inputActionMap.FindAction("Escape");
             captureScreenshotAction = inputActionMap.FindAction("Screenshot");
+
+            mainMenuButton.onClick.AddListener(OnMainMenuClicked);
+            pauseQuitButton.onClick.AddListener(OnPauseQuit);
         }
 
         private void Update()
@@ -53,7 +59,28 @@ namespace UnnaturalSelection.UI
 
         void ShowPauseMenu()
         {
+            pauseMenu.gameObject.SetActive(!pauseMenu.gameObject.activeSelf);
 
+            if (pauseMenu.gameObject.activeSelf)
+            {
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+            }
+            else
+            {
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+            }
+        }
+
+        void OnPauseQuit()
+        {
+            Application.Quit();
+        }
+
+        void OnMainMenuClicked()
+        {
+            SceneManager.LoadScene(0);
         }
 
         int numScreenshots = 0;
