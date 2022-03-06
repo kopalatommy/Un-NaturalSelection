@@ -20,6 +20,9 @@ namespace UnnaturalSelection.AI
 
         [SerializeField] private WeaponManager weaponManager;
 
+        [SerializeField] private Animator animator;
+        private Coroutine animatorCoroutine;
+
         [SerializeField]
         private Transform[] raycasts = new Transform[0];
         private float[] raycastDistances = new float[9];
@@ -33,6 +36,8 @@ namespace UnnaturalSelection.AI
         Quaternion characterTargetRot;
 
         float accumulatedFitness = 0;
+
+        private System.Random random = new System.Random();
 
         [SerializeField] private Vector4 worldBounds = new Vector4(-50, 50, -50, 50);
 
@@ -61,6 +66,22 @@ namespace UnnaturalSelection.AI
         private void Start()
         {
             movementController.OnStart();
+        }
+
+        public IEnumerator AnimatorStateUpdate()
+        {
+            while(true)
+            {
+                if ((random.Next(100) % 2) == 0)
+                {
+                    animator.Play("Walking");
+                }
+                else
+                {
+                    animator.Play("Walking - Arms Out");
+                }
+                yield return new WaitForSeconds(random.Next(100, 500) / 100f);
+            }
         }
 
         public void Update()
@@ -153,6 +174,11 @@ namespace UnnaturalSelection.AI
 
             (weaponManager.DefaultWeapon as ZombieMelee).AttackInput = attackAction;
             UpdateRotation(headingAction);
+
+            if (attackAction)
+            {
+                animator.Play("Attack");
+            }
         }
 
         public override float GetFitness()
@@ -179,6 +205,8 @@ namespace UnnaturalSelection.AI
                 transform.position = new Vector3(Random.Range(worldBounds.x, worldBounds.y), 1, Random.Range(worldBounds.z, worldBounds.w));
 
                 accumulatedFitness = 0f;
+
+                animatorCoroutine = StartCoroutine("AnimatorStateUpdate");
             }
             else
             {
@@ -192,6 +220,8 @@ namespace UnnaturalSelection.AI
                 PlayerRayHit = false;
                 PlayerAngle = 0f;
                 PlayerInFov = false;
+
+                StopCoroutine(animatorCoroutine);
             }
         }
 
@@ -214,7 +244,7 @@ namespace UnnaturalSelection.AI
 
         private void OnDamageDealt()
         {
-            Debug.Log("Zombied Dealt Damage");
+            Debug.Log("Zombie Dealt Damage");
 
             accumulatedFitness += 50;
         }
