@@ -267,6 +267,8 @@
     <Compile Include="Assets\UnitySharpNEAT\Assets\UnitySharpNEAT\SharpNEAT\Network\NetworkDefinition.cs" />
     <Compile Include="Assets\Scripts\Animation\ArmsAnimator.cs" />
     <Compile Include="Assets\Scripts\Environment\SurfaceUtility.cs" />
+    <Compile Include="Assets\Scripts\UI\StartMenuUIManager.cs" />
+    <Compile Include="Assets\Scripts\UI\GameplayUIManager.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\GameBuilders\FPSBuilder\RenderingPipeline\Built-in Pipeline\Runtime\Shaders\ReflectorSight.shader" />

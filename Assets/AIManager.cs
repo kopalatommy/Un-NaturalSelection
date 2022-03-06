@@ -3,18 +3,27 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnitySharpNEAT;
 
-public class AIManager : MonoBehaviour
+namespace UnnaturalSelection.AI
 {
-    [SerializeField]
-    private NeatSupervisor _neatSupervisor;
-
-    private void OnEnable()
+    public class AIManager : MonoBehaviour
     {
-        _neatSupervisor.StartEvolution();
-    }
+        [SerializeField]
+        private NeatSupervisor _neatSupervisor = null;
 
-    private void OnDisable()
-    {
-        _neatSupervisor.StopEvolution();
+        IEnumerator DelayStart()
+        {
+            yield return new WaitForSeconds(1);
+            _neatSupervisor.StartEvolution();
+        }
+
+        private async void Start()
+        {
+            StartCoroutine("DelayStart");
+        }
+
+        private void OnDisable()
+        {
+            _neatSupervisor.StopEvolution();
+        }
     }
 }
