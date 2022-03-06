@@ -18,10 +18,10 @@ MonoBehaviour:
   weight: 4
   size: 0.828
   meleeDamage: 50
-  meleeForce: 20
+  meleeForce: 5
   primaryFireMode: 1
   secondaryFireMode: 3
-  primaryRateOfFire: 800
+  primaryRateOfFire: 400
   secondaryRateOfFire: 700
   range: 50
   bulletsPerShoot: 1
@@ -31,7 +31,7 @@ MonoBehaviour:
     m_Bits: 1041
   ammoType: {fileID: 11400000, guid: e2135fd18f6096244969ef2a2dd42ebd, type: 2}
   reloadMode: 0
-  roundsPerMagazine: 30
+  roundsPerMagazine: 65
   hasChamber: 1
   maximumSpread: 1.5
   baseAccuracy: 0.55

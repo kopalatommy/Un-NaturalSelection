@@ -306,6 +306,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1457671676, guid: e6b273c9a59a84142b6c60c8dad1dbbc, type: 3}
+      propertyPath: m_text
+      value: Test Map
+      objectReference: {fileID: 0}
+    - target: {fileID: 1674886044, guid: e6b273c9a59a84142b6c60c8dad1dbbc, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -104
+      objectReference: {fileID: 0}
+    - target: {fileID: 3914224625205709728, guid: e6b273c9a59a84142b6c60c8dad1dbbc, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 135
+      objectReference: {fileID: 0}
+    - target: {fileID: 5813327390369815615, guid: e6b273c9a59a84142b6c60c8dad1dbbc, type: 3}
+      propertyPath: m_text
+      value: Arena
+      objectReference: {fileID: 0}
     - target: {fileID: 8435893435805557834, guid: e6b273c9a59a84142b6c60c8dad1dbbc, type: 3}
       propertyPath: m_Name
       value: UI

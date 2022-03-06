@@ -19,7 +19,7 @@ MonoBehaviour:
   refraction: {x: -0.5, y: 0.5}
   densityInfluence: 1
   damageMode: 1
-  damage: {x: 25, y: 45}
+  damage: {x: 50, y: 75}
   damageFalloffCurve:
     serializedVersion: 2
     m_Curve:

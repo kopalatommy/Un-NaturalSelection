@@ -10,16 +10,23 @@ namespace UnnaturalSelection.UI
     {
         [SerializeField] private Button startButton;
         [SerializeField] private Button quitButton;
+        [SerializeField] private Button arenaButton;
 
         private void Awake()
         {
-            startButton.onClick.AddListener(OnClickStart);
+            startButton.onClick.AddListener(OnClickClicked);
             quitButton.onClick.AddListener(OnQuitClicked);
+            arenaButton.onClick.AddListener(OnArenaClicked);
         }
 
-        void OnClickStart()
+        void OnClickClicked()
         {
             SceneManager.LoadScene(1);
+        }
+
+        void OnArenaClicked()
+        {
+            SceneManager.LoadScene(2);
         }
 
         void OnQuitClicked()
