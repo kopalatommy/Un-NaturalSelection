@@ -725,6 +725,9 @@ namespace UnnaturalSelection.Weapons
             if (instance == null)
                 return 0;
 
+            if (instance.InfiniteSupply)
+                return amount;
+
             if (instance.Amount >= amount)
             {
                 instance.Amount -= amount;

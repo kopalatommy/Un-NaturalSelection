@@ -18,6 +18,9 @@ namespace UnnaturalSelection.Weapons
 
         public AmmoType Instance => ammoType;
 
+        [SerializeField]
+        private bool infiniteSupply;
+
         public int Amount
         {
             get => amount;
@@ -27,5 +30,7 @@ namespace UnnaturalSelection.Weapons
         public int MaxAmount => maxAmount;
 
         public bool IsEmptySlot => ammoType == null;
+
+        public bool InfiniteSupply { get { return infiniteSupply; } }
     }
 }
